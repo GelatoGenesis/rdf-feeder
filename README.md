@@ -1,6 +1,8 @@
 # rdf-feeder
 Executable Java application to feed RDF-s to C-SPARQL engine
 
+Dependencies are Java 7 and a running [C-SPARQL engine](https://github.com/a71993/csparqlpush/tree/master/rsp_services_csparql).
+
 ## Setup
 
 * Modify src/main/resources/rdffeeder.properties to match your environment.

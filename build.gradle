@@ -6,7 +6,7 @@ task fatJar(type: Jar) {
     manifest {
         attributes 'Implementation-Title': 'RDF Feeder',
                 'Implementation-Version': version,
-                'Main-Class': 'com.rdffeeder.RDFFeeder'
+                'Main-Class': 'com.rdffeeder.RDFFeederExecutor'
     }
     baseName = project.name
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
@@ -15,9 +15,16 @@ task fatJar(type: Jar) {
 
 repositories {
     mavenCentral()
+    maven {
+        url 'http://streamreasoning.org/maven/'
+    }
 }
 
 dependencies {
-    compile 'ch.qos.logback:logback-classic:1.1.2'
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile     group: 'log4j',                       name: 'log4j',                        version: '1.2.16'
+    compile     group: 'org.slf4j',                   name: 'slf4j-api',                    version: '1.6.1'
+    compile     group: 'org.slf4j',                   name: 'slf4j-log4j12',                version: '1.6.1'
+    compile     group: 'commons-configuration',       name: 'commons-configuration',        version: '1.10'
+    compile     group: 'polimi.deib',                 name: 'rsp-services-api',             version: '0.4'
+    testCompile group: 'junit',                       name: 'junit',                        version: '4.11'
 }

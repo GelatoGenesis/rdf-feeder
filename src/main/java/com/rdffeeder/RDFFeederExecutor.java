@@ -10,7 +10,7 @@ public class RDFFeederExecutor {
 
     private static final Logger logger = LoggerFactory.getLogger(RDFFeederExecutor.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         logger.info("RDF stream feeder invoked @ " + new Date() + " with params " + Arrays.asList(args));
         if(args.length < 2) {
 
@@ -20,7 +20,10 @@ public class RDFFeederExecutor {
             return;
         }
 
-        new RDFFeeder(args[0], args[1]).feed();
+
+        String rdfFilePath = args[0];
+        String streamName = args[1];
+        new RDFFeeder(streamName).feed(rdfFilePath);
     }
 
 }

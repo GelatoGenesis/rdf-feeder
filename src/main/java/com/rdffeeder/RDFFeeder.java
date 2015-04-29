@@ -25,10 +25,13 @@ public class RDFFeeder {
         initRDFStream(rdfStreamName);
     }
 
-    private void initRDFStream(String rdfStreamName) throws ServerErrorException, StreamErrorException {
+    private void initRDFStream(String rdfStreamName) throws Exception {
         if (!rdfEngine.getStreamsInfo().contains(rdfStreamName)) {
             logger.info("RDF stream {} doesn't exist yet. Will register it.", rdfStreamName);
             rdfEngine.registerStream(rdfStreamName);
+            logger.info("Sent registration request for stream {} to RDF engine. Will wait 30 seconds " +
+                    "to give the RDF engine time to properly register the stream.");
+            Thread.sleep(30000);
         } else {
             logger.info("RDF stream {} already exists.", rdfStreamName);
         }

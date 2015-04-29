@@ -29,9 +29,9 @@ public class RDFFeeder {
         if (!rdfEngine.getStreamsInfo().contains(rdfStreamName)) {
             logger.info("RDF stream {} doesn't exist yet. Will register it.", rdfStreamName);
             rdfEngine.registerStream(rdfStreamName);
-            logger.info("Sent registration request for stream {} to RDF engine. Will wait 30 seconds " +
+            logger.info("Sent registration request for stream {} to RDF engine. Will wait 60 seconds " +
                     "to give the RDF engine time to properly register the stream.", rdfStreamName);
-            Thread.sleep(30000);
+            Thread.sleep(60000);
         } else {
             logger.info("RDF stream {} already exists.", rdfStreamName);
         }
